@@ -1,0 +1,22 @@
+
+create table CourseMaster (id integer auto_increment,Nam varchar(20) not null,
+DURATION integer,fees integer  ,TECHNOLOGY varchar(20),primary key(id));
+insert into CourseMaster(Nam,DURATION,TECHNOLOGY,fees) values ('Core Java',2,'java',1000);
+insert into CourseMaster(Nam,DURATION,TECHNOLOGY,fees) values ('Advance Java',2,'java',2000);
+insert into CourseMaster(Nam,DURATION,TECHNOLOGY,fees) values ('Python',2,'python',2500);
+select * from CourseMaster;
+
+create table studentMaster(ID integer auto_increment,Name varchar(20) not null,passord varchar(20),
+email varchar(20),mobile varchar(20),city varchar(20),primary key(id));
+insert into studentMaster(name,passord,email,mobile,city) values ('jack','jack123','jack@gmail.com','123456','london');
+insert into studentMaster(name,passord,email,mobile,city) values ('bob','bob123','bob@gmail.com','123457','paris');
+insert into studentMaster(name,passord,email,mobile,city) values ('satya','satya123','satya@gmail.com','123489','new york');
+select * from studentMaster;
+
+create table CoursesEnrolled (eid integer auto_increment,studentid integer not null,courseid integer not null,feeid integer ,
+primary key(eid),Foreign key(courseid) references CourseMaster(id),Foreign key(studentid) references studentMaster(ID));
+select * from CoursesEnrolled;
+
+create table feepaid (id integer auto_increment,studentsid integer not null,
+amount integer,primary key(id));
+select * from feepaid;
