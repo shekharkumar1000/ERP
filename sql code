@@ -1,0 +1,55 @@
+create table cart (cartid integer,prodid integer,qty integer);
+insert into cart(cartid,prodid,qty) values (1,1,4);
+insert into cart(cartid,prodid,qty) values (1,4,10);
+insert into cart(cartid,prodid,qty) values (1,3,7);
+insert into cart(cartid,prodid,qty) values (2,2,20);
+insert into cart(cartid,prodid,qty) values (2,5,10);
+insert into cart(cartid,prodid,qty) values (3,2,6);
+insert into cart(cartid,prodid,qty) values (1,1,3);
+insert into cart(cartid,prodid,qty) values (2,2,5);
+
+create table products(ID integer,Name varchar(15),Price integer);
+insert into products(ID,Name,Price) values (1,'Coke',6);
+insert into products(ID,Name,Price) values (2,'Pepsi',5);
+insert into products(ID,Name,Price) values (3,'5Star',2);
+insert into products(ID,Name,Price) values (4,'Maggi',8);
+insert into products(ID,Name,Price) values (5,'Dove',12);
+
+select * from products;
+
+create table Employees (ID integer,Name varchar(20));
+insert into Employees(ID,Name) values (1,'jack');
+insert into Employees(ID,Name) values (2,'Tim');
+insert into Employees(ID,Name) values (3,'Annie');
+insert into Employees(ID,Name) values (4,'Steve');
+insert into Employees(ID,Name) values (5,'Mary');
+
+select * from Employees;
+
+
+create table products(Prodid integer,Name varchar(15),Cartid integer,Quantity integer,Price integer);
+insert into products(Prodid,Name,Cartid,Quantity,price) values (1,'coke',1,200,4);
+insert into products(Prodid,Name,Cartid,Quantity,price) values (2,'Diet Coke',1,160,5);
+insert into products(Prodid,Name,Cartid,Quantity,price) values (3,'Coke Zero',1,70,6);
+insert into products(Prodid,Name,Cartid,Quantity,price) values (4,'Pepsi',1,180,4);
+insert into products(Prodid,Name,Cartid,Quantity,price) values (5,'RedBull',1,160,8);
+insert into products(Prodid,Name,Cartid,Quantity,price) values (6,'Lux',2,60,3);
+insert into products(Prodid,Name,Cartid,Quantity,price) values (7,'Dove',2,40,5);
+insert into products(Prodid,Name,Cartid,Quantity,price) values (8,'Pear',2,25,6);
+insert into products(Prodid,Name,Cartid,Quantity,price) values (9,'iPhone7',3,6,400);
+insert into products(Prodid,Name,Cartid,Quantity,price) values (10,'iPhone6',3,8,300);
+insert into products(Prodid,Name,Cartid,Quantity,price) values (11,'iPhone7S',3,4,500);
+insert into products(Prodid,Name,Cartid,Quantity,price) values (12,'iPhone8',3,2,600);
+insert into products(Prodid,Name,Cartid,Quantity,price) values (13,'Pixel',3,2,550);
+insert into products(Prodid,Name,Cartid,Quantity,price) values (14,'Galaxy S9',3,1,600);
+
+select * from products;
+
+create table Category(id integer,Category varchar(15));
+insert into Category(id,Category) values (1,'SoftDrink');
+insert into Category(id,Category) values (2,'Soap');
+insert into Category(id,Category) values (3,'Mobile');
+
+select * from Category;
+
+
