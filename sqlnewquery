@@ -1,0 +1,169 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Mar 20, 2019 at 10:12 AM
+-- Server version: 5.6.43-cll-lve
+-- PHP Version: 7.2.7
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `database2`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `CourseMaster`
+--
+
+CREATE TABLE `CourseMaster` (
+  `id` int(11) NOT NULL,
+  `Nam` varchar(30) NOT NULL,
+  `DURATION` int(11) NOT NULL,
+  `fees` varchar(30) NOT NULL,
+  `TECHNOLOGY` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `CourseMaster`
+--
+
+INSERT INTO `CourseMaster` (`id`, `Nam`, `DURATION`, `fees`, `TECHNOLOGY`) VALUES
+(1, 'Core Java', 2, 'java', '1000'),
+(2, 'Advance Java', 2, 'java', '2000'),
+(3, 'Python', 2, 'Python', '2500');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `CoursesEnrolled`
+--
+
+CREATE TABLE `CoursesEnrolled` (
+  `eid` int(11) NOT NULL,
+  `studentid` int(11) NOT NULL,
+  `courseid` int(11) NOT NULL,
+  `feeid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feepaid`
+--
+
+CREATE TABLE `feepaid` (
+  `id` int(11) NOT NULL,
+  `studentsid` int(11) NOT NULL,
+  `amount` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `studentMaster`
+--
+
+CREATE TABLE `studentMaster` (
+  `ID` int(11) NOT NULL,
+  `Name` varchar(30) NOT NULL,
+  `passord` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `mobile` varchar(30) NOT NULL,
+  `city` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `studentMaster`
+--
+
+INSERT INTO `studentMaster` (`ID`, `Name`, `passord`, `email`, `mobile`, `city`) VALUES
+(1, 'jack', 'jack123', 'jack@gmail.com', '123456', 'london'),
+(2, 'bob', 'bob123', 'bob@gmail.com', '123457', 'paris'),
+(3, 'satya', 'satya123', 'satya@gmail.com', '123489', 'new york');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `CourseMaster`
+--
+ALTER TABLE `CourseMaster`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `CoursesEnrolled`
+--
+ALTER TABLE `CoursesEnrolled`
+  ADD PRIMARY KEY (`eid`),
+  ADD KEY `courseid` (`courseid`),
+  ADD KEY `studentid` (`studentid`);
+
+--
+-- Indexes for table `feepaid`
+--
+ALTER TABLE `feepaid`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `studentMaster`
+--
+ALTER TABLE `studentMaster`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `CourseMaster`
+--
+ALTER TABLE `CourseMaster`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `CoursesEnrolled`
+--
+ALTER TABLE `CoursesEnrolled`
+  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `feepaid`
+--
+ALTER TABLE `feepaid`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `studentMaster`
+--
+ALTER TABLE `studentMaster`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `CoursesEnrolled`
+--
+ALTER TABLE `CoursesEnrolled`
+  ADD CONSTRAINT `CoursesEnrolled_ibfk_1` FOREIGN KEY (`courseid`) REFERENCES `CourseMaster` (`id`),
+  ADD CONSTRAINT `CoursesEnrolled_ibfk_2` FOREIGN KEY (`studentid`) REFERENCES `studentMaster` (`ID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
